@@ -23,6 +23,9 @@ public class Config {
     @Value("${spring.activemq.password}")
     private String password;
 
+    @Value("${spring.activemq.packages.trust-all}")
+    private Boolean trustAllPackages;
+
     @Bean
     public Queue queue() {
         return new ActiveMQQueue("ds.queue");
@@ -39,6 +42,7 @@ public class Config {
         factory.setBrokerURL(brokerUrl);
         factory.setUserName(user);
         factory.setPassword(password);
+        factory.setTrustAllPackages(trustAllPackages);
         return factory;
     }
 
